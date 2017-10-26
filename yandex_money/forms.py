@@ -72,8 +72,12 @@ class BasePaymentForm(forms.Form):
         super(BasePaymentForm, self).__init__(*args, **kwargs)
         if hasattr(settings, 'YANDEX_ALLOWED_PAYMENT_TYPES'):
             allowed_payment_types = settings.YANDEX_ALLOWED_PAYMENT_TYPES
+            # lambda x: x[0] in allowed_payment_types
+            def allowedpayment(x):
+                return x[0] in allowed_payment_types
+            allowedpay = allowedpayment
             self.fields['paymentType'].widget.choices = filter(
-                lambda x: x[0] in allowed_payment_types,
+                allowedpay,
                 self.fields['paymentType'].widget.choices)
 
     @classmethod
