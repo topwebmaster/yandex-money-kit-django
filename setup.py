@@ -5,7 +5,7 @@ from distutils.core import setup
 from setuptools import find_packages
 
 __author__ = 'Yandex.Money'
-__version__ = '1.1.2'
+__version__ = '1.1.3'
 
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
@@ -35,7 +35,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],
     install_requires=[
-        'Django>=1.4',
+        'Django<2.0',
         'lxml>=2.3.4',
         'six',
     ],
